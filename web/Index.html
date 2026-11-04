@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base target="_blank">
+<style>
+:root{color-scheme:light;--ink:#0d2937;--muted:#42606c;--blue:#064a64;--line:#ccdce2;--card:#fff;--soft:#edf8fa;font:16px/1.5 system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#f2f7f8;color:var(--ink)}a{color:#07536c}
+header{background:#0d2937;color:#fff}.bar{max-width:62rem;margin:auto;padding:1.05rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.wordmark{display:flex;align-items:center;gap:.55rem;font-weight:750}.drop{width:1.15rem;height:1.15rem;background:#8ee3e9;border-radius:70% 55% 68% 8%;transform:rotate(-45deg)}
+header a{color:#ccf2f6;font-weight:650;font-size:.9rem;text-decoration-thickness:1px;text-underline-offset:.18em}
+main{max-width:62rem;margin:auto;padding:2.8rem 1.5rem 3.5rem}.eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:800;color:#08617b}
+h1{font-size:clamp(2.6rem,7vw,4rem);line-height:1.03;letter-spacing:-.055em;margin:.45rem 0 .75rem}h2{line-height:1.2;margin:.2rem 0 .6rem}p{margin:.4rem 0}
+.lead{color:var(--muted);max-width:39rem;font-size:1.08rem}.card{background:var(--card);border:1px solid var(--line);border-radius:1.05rem;padding:clamp(1rem,3vw,1.5rem)}
+form{margin-top:1.5rem}.row{display:flex;gap:.7rem;align-items:end}.name{flex:1}label{font-weight:720;display:block;margin-bottom:.35rem}
+input,button{font:inherit;border-radius:.55rem;min-height:2.85rem}input{padding:.65rem .8rem;width:100%;color:var(--ink);border:1px solid #9db7c3}
+button{cursor:pointer;background:var(--blue);color:#fff;padding:.6rem 1.15rem;border:1px solid var(--blue);font-weight:720}button:disabled{opacity:.65;cursor:wait}
+button.example{min-height:2rem;padding:.2rem .7rem;color:var(--blue);background:#edf8fa;border:1px solid #c5e2e8;font-size:.87rem}
+:focus-visible{outline:3px solid #1482a0;outline-offset:3px}.details{margin-top:.9rem;color:var(--muted)}summary{cursor:pointer;font-weight:650}.hint{margin:.5rem 0 0;max-width:23rem}
+.examples{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin-top:1rem;color:var(--muted);font-size:.87rem}
+#message{padding:.85rem 1rem;border-left:4px solid #2192a7;background:#e4f4f6;margin-top:1rem}#message[data-error=true]{background:#fff2e8;border-color:#b45622}
+#results{margin-top:1.25rem}.result-top{display:flex;justify-content:space-between;gap:1rem;align-items:start}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.metric{border-radius:.65rem;background:var(--soft);padding:.75rem .85rem}.metric b{display:block;font-size:1.55rem}.metric span{font-size:.84rem;color:var(--muted)}
+.criteria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.criterion{border:1px solid var(--line);border-radius:.65rem;padding:.8rem;min-width:0}.criterion h3{font-size:.95rem;margin:0}.criterion strong{font-size:1.3rem}
+.criterion p,.criterion a{font-size:.88rem}.criterion a{display:block;margin:.22rem 0;overflow-wrap:anywhere}.contact{padding-top:.85rem;border-top:1px solid var(--line)}
+.badge{font-size:.8rem;padding:.3rem .6rem;background:#edf8fa;border-radius:.35rem;display:inline-block}.why{font-size:1rem}.muted{color:var(--muted)}footer{margin-top:1.2rem;font-size:.85rem;color:var(--muted)}
+[hidden]{display:none!important}
+@media(max-width:560px){main{padding-top:1.8rem}.bar,main{padding-left:1rem;padding-right:1rem}.row{align-items:stretch;flex-direction:column}.criteria{grid-template-columns:1fr}.metric{padding:.5rem}.metric b{font-size:1.25rem}.result-top{flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="bar"><div class="wordmark"><span class="drop" aria-hidden="true"></span>Thirst Project</div><a rel="noopener" href="https://docs.google.com/spreadsheets/d/1bM3NeIQWEq0OhGwZY-VuQzc3O5bRw5lhZiXyfeJSJ5s/edit#gid=48105">Research sheet ↗</a></div></header>
+<main>
+<p class="eyebrow">Partnerships toolkit</p>
+<h1>Sponsor Scout</h1>
+<p class="lead">Find out how well a brand fits Thirst Project. Get a score, a benchmark rank, and the sources behind it.</p>
+<form id="form" class="card">
+<div class="row">
+<div class="name"><label for="name">Sponsor or brand name</label><input id="name" maxlength="120" placeholder="e.g. Mattel" autocomplete="off" required></div>
+<button id="submit" type="submit">Research sponsor</button>
+</div>
+<details class="details" id="hint"><summary>Add an official website if the name is ambiguous</summary>
+<div class="hint"><label for="website">Official website <span class="muted">(optional)</span></label><input id="website" maxlength="150" placeholder="example.com" autocomplete="off"></div>
+</details>
+<div class="examples">Try a saved profile <button class="example" type="button" data-example="Mattel">Mattel</button><button class="example" type="button" data-example="UTA">UTA</button><button class="example" type="button" data-example="LifeStraw">LifeStraw</button></div>
+</form>
+<div id="message" role="status" aria-live="polite" hidden></div>
+<section id="results" class="card" aria-labelledby="result-name" hidden>
+<div class="result-top"><div><p id="mode" class="eyebrow"></p><h2 id="result-name" tabindex="-1"></h2><a id="official" rel="noopener" hidden>Official source ↗</a></div><span class="badge" id="status"></span></div>
+<div class="metrics">
+<div class="metric"><span>Fit score</span><b id="score"></b></div>
+<div class="metric"><span>Benchmark rank</span><b id="rank"></b><span id="pool"></span></div>
+<div class="metric"><span>Evidence coverage</span><b id="coverage"></b></div>
+</div>
+<p id="why" class="why"></p>
+<div class="criteria" id="criteria"></div>
+<div class="contact"><strong>Outreach</strong><p id="contact"></p><a id="contact-source" rel="noopener" hidden>Contact source ↗</a></div>
+</section>
+<footer>Scores compare outreach fit using 30% audience, 45% cause history, and 25% industry fit. Each confirmed result is saved to the Prospect Research tab.</footer>
+</main>
+<script>
+const byId = id => document.getElementById(id);
+const labels = { gen_z: 'Gen Z / student audience', cause: 'Cause marketing', industry: 'Industry fit' };
+function message(text, error) {
+  byId('message').textContent = text;
+  byId('message').dataset.error = String(Boolean(error));
+  byId('message').hidden = !text;
+}
+function link(node, url) {
+  node.hidden = true;
+  node.removeAttribute('href');
+  try {
+    if (new URL(url).protocol === 'https:') {
+      node.href = url;
+      node.hidden = false;
+    }
+  } catch (error) {}
+}
+function render(payload) {
+  if (payload.state !== 'confirmed') {
+    message(payload.message, true);
+    if (payload.state === 'ambiguous') { byId('hint').open = true; byId('website').focus(); }
+    return;
+  }
+  const { record, result } = payload;
+  byId('mode').textContent = payload.mode;
+  byId('result-name').textContent = record.sponsor;
+  byId('status').textContent = result.status;
+  byId('score').textContent = result.score === null ? '—' : result.score + '/100';
+  byId('rank').textContent = result.rank === null ? '—' : '#' + result.rank;
+  byId('pool').textContent = result.benchmark + ' comparators';
+  byId('coverage').textContent = Math.round(result.coverage * 100) + '%';
+  byId('why').textContent = result.reason;
+  link(byId('official'), record.website);
+  link(byId('contact-source'), record.contactSource);
+  byId('contact').textContent = [record.email, record.contactRoute].filter(Boolean).join(' · ') || 'No suitable public contact route verified.';
+  byId('criteria').replaceChildren();
+  Object.entries(labels).forEach(([key, label]) => {
+    const { level, reason, sources } = record.criteria[key];
+    const card = document.createElement('div');
+    card.className = 'criterion';
+    const title = document.createElement('h3'); title.textContent = label;
+    const value = document.createElement('strong'); value.textContent = level === null ? '—' : level + '/5';
+    const note = document.createElement('p'); note.textContent = reason || 'No qualifying public evidence verified.';
+    card.append(title, value, note);
+    sources.forEach((url, index) => {
+      const anchor = document.createElement('a');
+      anchor.textContent = 'Source ' + (index + 1) + ' ↗';
+      anchor.rel = 'noopener';
+      link(anchor, url);
+      card.append(anchor);
+    });
+    byId('criteria').append(card);
+  });
+  message(payload.saved ? 'Saved to Prospect Research.' : payload.saveMessage, !payload.saved);
+  byId('results').hidden = false;
+  byId('result-name').focus();
+}
+const setBusy = busy => {
+  document.querySelectorAll('form button').forEach(button => { button.disabled = busy; });
+  byId('submit').textContent = busy ? 'Researching…' : 'Research sponsor';
+  byId('form').setAttribute('aria-busy', String(busy));
+};
+function submitSearch(useSavedProfile) {
+  if (!byId('name').value.trim()) { message('Enter a sponsor or brand name.', true); byId('name').focus(); return; }
+  byId('results').hidden = true;
+  setBusy(true);
+  message('Checking the brand, gathering sources, and scoring fit. A new brand can take a minute.');
+  if (!globalThis.google?.script?.run) {
+    setBusy(false); message('Open the deployed Apps Script web app to run a search.', true); return;
+  }
+  google.script.run
+    .withSuccessHandler(result => { setBusy(false); render(result); })
+    .withFailureHandler(error => { setBusy(false); message(error?.message || 'The request failed. Please retry.', true); })
+    .assessSponsor(byId('name').value, byId('website').value, useSavedProfile);
+}
+byId('form').addEventListener('submit', event => {
+  event.preventDefault();
+  submitSearch(false);
+});
+document.querySelectorAll('[data-example]').forEach(button => button.addEventListener('click', () => {
+  byId('name').value = button.dataset.example;
+  byId('website').value = '';
+  submitSearch(true);
+}));
+</script>
+</body>
+</html>

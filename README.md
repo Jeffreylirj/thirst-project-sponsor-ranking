@@ -2,6 +2,10 @@
 
 An explainable 0–100 **outreach priority** score for Thirst Project's student-led clean-water mission and gala. It ranks sponsors with comparable public evidence and gives the team a reason, the underlying sources, and the best public outreach route we found. It does not estimate the probability of a sponsorship or send outreach.
 
+## Sponsor Scout web app
+
+The browser form confirms a brand, ranks its fit using the same benchmark, and saves the result and its public sources to **Prospect Research** in Google Sheets. See the [web app deployment guide](web/README.md).
+
 ## Run it
 
 From the repository root, with Python 3.10 or later:
