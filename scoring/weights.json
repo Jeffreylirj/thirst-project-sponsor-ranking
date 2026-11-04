@@ -1,0 +1,5 @@
+{
+  "model_version": "1.0",
+  "weights": {"gen_z": 30, "cause": 45, "industry": 25},
+  "minimum_coverage": 0.70
+}
