@@ -103,7 +103,7 @@ function parseResearch_(candidate, model, retrievedUrls) {
   return record;
 }
 
-function geminiRequest_(request, key, model) {
+function geminiRequest_(request, key, model, retryAttempt = 0) {
   const response = UrlFetchApp.fetch(GEMINI_API + model + ':generateContent', {
     method: 'post',
     contentType: 'application/json',
@@ -121,7 +121,15 @@ function geminiRequest_(request, key, model) {
   if (invalidKey || status === 401) throw Error('Google rejected the Gemini API key. Check the key in Google AI Studio.');
   const unavailable = status === 404 || ([400, 403].includes(status) &&
     /model.*(?:not available|not found|not supported|access)|(?:access|permission).*model/i.test(body.error?.message || ''));
-  if (unavailable && model === GEMINI_MODELS[0]) return geminiRequest_(request, key, GEMINI_MODELS[1]);
+  const transient = [500, 502, 503, 504].includes(status);
+  if ((unavailable || transient) && model === GEMINI_MODELS[0]) {
+    return geminiRequest_(request, key, GEMINI_MODELS[1]);
+  }
+  if (transient && retryAttempt === 0) {
+    Utilities.sleep(1000);
+    return geminiRequest_(request, key, model, 1);
+  }
+  if (transient) throw Error('Google’s Gemini service is temporarily busy. Please try again shortly.');
   if (status === 403) throw Error('Google denied access. Check the Gemini API key and project in Google AI Studio.');
   if (status === 429) throw Error('The Gemini project reached a free-tier request or token limit. Try again later and check Rate Limit in Google AI Studio.');
   if (status !== 200) throw Error('Gemini could not complete the request (HTTP ' + status + ').');
