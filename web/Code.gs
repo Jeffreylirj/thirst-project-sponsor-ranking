@@ -68,6 +68,7 @@ function parseResearch_(candidate, model) {
     .filter(entry => entry.urlRetrievalStatus === 'URL_RETRIEVAL_STATUS_SUCCESS' && https_(entry.retrievedUrl))
     .map(entry => urlKey_(entry.retrievedUrl)));
   const draft = geminiJson_(candidate);
+  console.info(JSON.stringify({provider: model, state: draft.state, sponsor: draft.sponsor, website: draft.website, retrievedUrls: [...consulted], summary: draft.summary}));
   const verified = value => https_(value) && consulted.has(urlKey_(value));
   const state = draft.state === 'ambiguous' ? 'ambiguous' : 'unconfirmed';
   if (draft.state !== 'confirmed' || !clean_(draft.sponsor, 120) || !verified(draft.website)) {
