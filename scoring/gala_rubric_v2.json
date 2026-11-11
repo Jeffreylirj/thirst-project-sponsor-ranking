@@ -1,0 +1,134 @@
+{
+  "rubric_version": "2.0",
+  "status": "specification_not_deployed",
+  "revised_on": "2026-11-10",
+  "purpose": "LA gala outreach priority",
+  "weights": {
+    "cause": 25,
+    "la_presence": 20,
+    "gala_fit": 20,
+    "gen_z": 15,
+    "mission": 10,
+    "capacity": 10
+  },
+  "official_rank_requires": "all_six_criteria_reviewed_and_eligible",
+  "provisional_minimum_coverage": 0.8,
+  "provisional_required_criteria": [
+    "cause",
+    "la_presence",
+    "gala_fit"
+  ],
+  "criteria": [
+    {
+      "key": "cause",
+      "label": "Relevant giving history",
+      "weight": 25,
+      "anchors": [
+        "Affirmative, comprehensive evidence of no eligible nonprofit support; an unsuccessful search is NA.",
+        "One documented nonprofit contribution outside water, youth or education.",
+        "Repeated or multiple nonprofit contributions outside water, youth or education.",
+        "One documented contribution to a water-access, youth-empowerment or education nonprofit.",
+        "Relevant support in two distinct years, or contributions to at least two relevant nonprofits.",
+        "Relevant support in at least three distinct years, with a contribution in the past 36 months."
+      ],
+      "evidence": "Company impact reports; named nonprofit annual reports or sponsor lists; official contribution announcements. Record recipient, year, cash/in-kind type and URL.",
+      "boundary": "Measures demonstrated giving, not mission language. Membership, certification or having a foundation alone does not establish a gift. Gala history remains a separate validation dataset, not a scoring input.",
+      "rationale": "25%: strongest evidence of willingness to support nonprofits; reduced from Scout's 45% so geography and a usable gala offer can matter."
+    },
+    {
+      "key": "la_presence",
+      "label": "LA presence / meeting access",
+      "weight": 20,
+      "anchors": [
+        "An authoritative, comprehensive current footprint confirms no presence in the Southern California counties defined below.",
+        "LA retail/stockist availability or a one-off LA event only; no qualifying staffed office identified.",
+        "A staffed company office or headquarters elsewhere in Southern California, with no qualifying LA County office.",
+        "A staffed LA County office, studio or operating facility; local giving/partnership remit is unverified.",
+        "A staffed LA County office plus a documented ongoing LA community-giving or sponsorship program.",
+        "LA County headquarters OR publicly documented regional philanthropy/partnership leadership based in LA County."
+      ],
+      "evidence": "Official office/contact pages, current annual report or SEC filing, official leadership biographies, and local program pages. Record city, county, office type, decision-maker location if public, URL and checked date.",
+      "boundary": "Use the highest supported anchor. LA means Los Angeles County, including Beverly Hills, Burbank, Santa Monica, Culver City and El Segundo. Stores, remote job listings and registered-agent addresses do not establish corporate access. Unknown geography is NA.",
+      "rationale": "20%: a deliberate gala-specific preference for local meetings and attendance. Maximum effect is 20 points; non-LA companies can still qualify. The exact weight is a policy choice, not an empirically fitted probability."
+    },
+    {
+      "key": "gala_fit",
+      "label": "Gala activation / offer fit",
+      "weight": 20,
+      "anchors": [
+        "Reviewed business assets show no credible permissible gala contribution mechanism.",
+        "Only a generic logo/visibility proposal; no specific usable contribution identified.",
+        "One feasible mechanism tied to verified assets, but comparable execution is unverified.",
+        "A comparable charitable event or cause activation has been executed and maps to a specific gala proposal.",
+        "Two compatible mechanisms/assets with at least one demonstrated comparable execution.",
+        "Repeated comparable charity-event activation, with a feasible gala proposal and at least two verified usable assets/mechanisms."
+      ],
+      "evidence": "Official event sponsorship case studies, nonprofit event credits, donation/program pages and business/service pages. Identify a specific offer: cash/table, talent, media, auction item, hospitality, production or in-kind support.",
+      "boundary": "Cash sponsorship is a valid mechanism, including for B2B companies. Product-linked giving and round-ups are options, not required formats. A water-related product alone does not earn activation points. Policy exclusions are handled before scoring.",
+      "rationale": "20%: replaces broad industry stereotypes with a concrete offer that can help this LA gala. Does not assume every consumer brand automatically fits."
+    },
+    {
+      "key": "gen_z",
+      "label": "Youth / student audience",
+      "weight": 15,
+      "anchors": [
+        "Affirmative audience evidence shows no youth/student relevance.",
+        "Broad adult audience only, supported by audience or program evidence.",
+        "Documented youth-inclusive products or services, without targeted youth activity.",
+        "A documented youth/student-targeted campaign or measured audience segment.",
+        "An active student program or sustained youth-targeted engagement.",
+        "Multiple ongoing student/youth programs or a documented core audience in the target age range."
+      ],
+      "evidence": "Official student/campus programs, campaign briefs or credible dated audience research. Record actual age range; use ages 13–26 as the research target unless Thirst specifies a different segment.",
+      "boundary": "Follower counts, TikTok use and a youthful visual style do not establish audience age. Avoid treating all children as teens or all young adults as students. Score only documented overlap.",
+      "rationale": "15%: retains Thirst's student network as a valuable asset without letting it dominate a gala cash or hospitality sponsorship."
+    },
+    {
+      "key": "mission",
+      "label": "Mission alignment",
+      "weight": 10,
+      "anchors": [
+        "Published priorities explicitly rule out water access, youth empowerment and education.",
+        "A documented general social-responsibility commitment only.",
+        "A specific environmental/social program, including operational water efficiency, without community-water/youth/education aims.",
+        "An active community clean-water-access, youth-empowerment or education initiative.",
+        "A relevant active initiative with measurable public targets and a progress report.",
+        "Multiple relevant active initiatives with reported outcomes."
+      ],
+      "evidence": "Current strategy, sustainability/impact report and program results. Record the beneficiary group, commitment, target and reported result where applicable.",
+      "boundary": "Measures stated and implemented mission priorities; history measures actual contributions; gala fit measures usable assets. Hydration branding, skincare ingredients and selling water do not automatically establish community water-access impact.",
+      "rationale": "10%: restores the original document's mission criterion while limiting double counting with giving history and activation."
+    },
+    {
+      "key": "capacity",
+      "label": "Cash capacity relative to ask",
+      "weight": 10,
+      "anchors": [
+        "Documented eligible cash award limit is zero (also check eligibility before proceeding).",
+        "0 < C/A < 0.25.",
+        "0.25 ≤ C/A < 0.50.",
+        "0.50 ≤ C/A < 1.00.",
+        "1.00 ≤ C/A < 2.00.",
+        "C/A ≥ 2.00."
+      ],
+      "evidence": "A = the team's explicit target cash sponsorship ask. C = a current applicable published per-award cap; if absent, the median of verified comparable single cash awards in the past 36 months (one award may be used, flagged limited evidence). Record amounts, currency, years, recipients and URLs.",
+      "boundary": "Use only awards/programs for which this ask is plausibly eligible. No target ask or no comparable public cash amount means NA. Revenue, valuation, employee count, total CSR budget and customer round-up proceeds are not company cash available to this gala. Record in-kind capacity separately.",
+      "rationale": "10%: supports a realistic ask without equating company size with willingness to give. Capacity is an evidence-based benchmark, not a promise or available budget."
+    }
+  ],
+  "rules": {
+    "Purpose / version": "Gala rubric 2.0 • revised 2026-11-10. Use for LA gala prospect outreach priority. This is a combined replacement specification, not a sponsorship probability model.",
+    "Calculation": "Complete score = 20 × Σ(weight × level) / Σ(weights). Weights sum to 100; levels are integers 0–5. Display one decimal, rank on the unrounded value, and share ranks for ties.",
+    "Missing evidence": "Use blank/NA, never zero, for missing or inconclusive evidence. Each assigned level needs a one-sentence factual reason and at least one supporting public URL. A generic homepage URL does not substantiate an unrelated claim.",
+    "Provisional results": "A provisional score requires known giving history, LA presence and gala fit, plus ≥80% weighted evidence coverage. Normalize over known weights; show coverage and the full-score floor/ceiling. Keep it out of the official rank until all six criteria are reviewed.",
+    "Floor / ceiling": "Floor = 20 × Σ(known weight × level) / 100. Ceiling = floor + missing weight percentage points. Example: missing the 10% capacity criterion leaves a 10-point possible range.",
+    "Local geography": "LA means LA County. Elsewhere in Southern California means Orange, Ventura, Riverside, San Bernardino, San Diego or Imperial County. Use the highest supported LA anchor; a non-LA headquarters does not prevent a top score when regional sponsorship leadership is LA-based.",
+    "Local meeting field": "Also record LA city, office type, public decision-maker role/location, official contact route and checked date. LA score ≥3 marks a local-meeting candidate; confirm availability by outreach. Do not infer a decision-maker from a store address.",
+    "Policy / timing check": "Before ranking, verify identity and sponsorship-policy suitability. Mark unresolved youth-safety or reputation concerns Review; an explicit applicable exclusion is Ineligible. Verify the upcoming gala date, application window, geography restrictions and lead time separately; no fixed calendar bonus.",
+    "Relationships / email": "Track warm introductions, prior gala sponsorships, outreach status and email outside the public fit score. Use publicly published organizational contacts; do not guess emails. CRM facts remain separately permissioned and do not become public source claims.",
+    "Evidence freshness": "Check current offices, programs and policies at research time. Prefer the latest report and source dates within 24 months for ongoing status. Older documents may establish historical giving but cannot alone prove an office/program is still active. Record exceptions explicitly.",
+    "Weight rationale / validation": "The six weights are transparent judgments chosen for Thirst's stated gala needs. Neither published research nor the existing positive-only sponsor roster validates these exact percentages. Do not tune weights just to force Paramount, Mattel or UTA to the top.",
+    "Validation before rollout": "Re-research every candidate under these anchors; do not reuse old 0–5 labels as equivalent. Check repeat sponsors descriptively, then freeze the rubric and evaluate later approached prospects including declines/no response. Report sensitivity at LA weights 15%, 20%, 25%, adjusting giving history to 30%, 25%, 20%.",
+    "Rollout status": "Rubric/specification updated here. Existing Criteria/Prospects formulas and Sponsor Scout web app still use their prior model versions. Existing rankings have not been rescored. A scoring-code and evidence migration is required before labeling those outputs v2."
+  }
+}

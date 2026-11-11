@@ -52,6 +52,8 @@ Use official corporate reports, company announcements, filings, and named nonpro
 
 ## Rubric and weights
 
+For the revised LA gala criteria, see the [v2 comparison and scoring guide](docs/gala-rubric-v2.md) and its [machine-readable specification](scoring/gala_rubric_v2.json). V2 gives LA presence/meeting access 20% and distinguishes a feasible gala offer from industry type. It is a versioned rubric update; the current Python model, deployed web app and prior rankings still use the v1 weights below until their evidence and scoring code are migrated.
+
 Based on the [reference scoring rubric](https://docs.google.com/document/d/1GQ66Itbgv1ImtMm08o_62PW-8xdCbA5e5lLLImeU0Os/edit?tab=t.0). V1 uses three public criteria; industry fit captures a concrete route to help or activate a partnership. Capacity, CRM relationships, and nonfinancial resources can be added later once Thirst confirms the ask and the research track agrees on consistent measures. Review eligibility and reputation separately.
 
 | Level | Gen Z / student audience (30%) | Cause-marketing / nonprofit history (45%) | Industry fit (25%) |
